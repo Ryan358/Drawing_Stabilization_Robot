@@ -13,18 +13,21 @@ void setup()
 
 void loop()
 {
-
-    for(angle = 0; angle < 90; angle += 1)    // command to move from 0 degrees to 180 degrees 
+    for(angle = 0; angle < 180; angle += 1)    // command to move from 0 degrees to 180 degrees 
   {                                  
     servo1.write(angle);                 //command to rotate the servo to the specified angle
     servo2.write(angle);
-    delay(15);                       
-  }
-
-  for(angle = 90; angle <= 1; angle +- 1)    // command to move from 0 degrees to 180 degrees 
-  {                                  
-    servo1.write(angle);                 //command to rotate the servo to the specified angle
+    delay(10);                       
+  } 
+ 
+  delay(1000);
+  
+  for(angle = 180; angle>=1; angle-=1)     // command to move from 180 degrees to 0 degrees 
+  {                                
+    servo1.write(angle);              //command to rotate the servo to the specified angle
     servo2.write(angle);
-    delay(15);                       
-  }
+    delay(10);                       
+  } 
+
+    delay(1000);
 }
