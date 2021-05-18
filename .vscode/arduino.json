@@ -2,5 +2,5 @@
     "board": "arduino:avr:uno",
     "port": "COM5",
     "programmer": "arduino:avrisp",
-    "sketch": "servo_line\\servo_line.ino"
+    "sketch": "accel_test\\accel_test.ino"
 }

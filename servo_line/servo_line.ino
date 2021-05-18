@@ -39,7 +39,7 @@ void loop()
         servo1.write(start_angle1 + j);
        
         
-        delay(50);
+        delay(20);
     }
 
     delay(1000);
