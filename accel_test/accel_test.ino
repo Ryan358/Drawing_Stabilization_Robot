@@ -1,15 +1,20 @@
 #include <Wire.h>
 #include <Adafruit_MMA8451.h>
 #include <Adafruit_Sensor.h>
+#include <Servo.h> 
+ 
+Servo servo; 
 
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
 
-int x_accel[100];
-int y_accel[100];
 int i;
+int angle = 0;
+float x;
+
+
 void setup(){
     Serial.begin(9600);
-  
+    servo.attach(9);
     Serial.println("Adafruit MMA8451 test!");
   
 
@@ -23,18 +28,37 @@ void setup(){
   
     Serial.print("Range = "); Serial.print(2 << mma.getRange());  
     Serial.println("G");
-    for(i=0;i=99; i+=1){
-        sensors_event_t event; 
-        mma.getEvent(&event);
-        x_accel[i] = event.acceleration.x;
-        Serial.print(event.acceleration.x);
-        delay(300);
-    }
+    
+    sensors_event_t event;
+    mma.getEvent(&event);
+    Serial.print(event.acceleration.x); Serial.print("\t"); 
+    Serial.print(event.acceleration.y); Serial.print("\t");
+    Serial.print(event.acceleration.z); Serial.print("\t");
+
+    Serial.println();
+
     
 
 }
 
 void loop(){
+  
+    sensors_event_t event;
+    mma.getEvent(&event);
+    //Serial.print(event.acceleration.x); Serial.print("\t"); 
+    //Serial.print(event.acceleration.y); Serial.print("\t");
+    //Serial.print(event.acceleration.z); Serial.print("\t");
 
+    Serial.println();
+    
+    delay(50);
+    x = (float)event.acceleration.x;
+    if (x > 2.5){
+        angle += 10;
+        servo.write(angle);
+        delay(50);
+    }
+    Serial.print(x);
+    delay(100);
 
 }
