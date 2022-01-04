@@ -1,2 +1,2 @@
-# ME153_Design_Project
+# Drawing Stabilization Robot
  Drawing Robot
