@@ -1,2 +1,2 @@
 # Drawing Stabilization Robot
- Drawing Robot
+ This robot is designed to stabilize hand tremors in people with motor function issues.
