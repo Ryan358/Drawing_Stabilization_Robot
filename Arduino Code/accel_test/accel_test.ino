@@ -19,7 +19,7 @@ void setup(){
   
 
     if (! mma.begin()) {
-        Serial.println("Couldnt start");
+        Serial.println("Couldn't start");
     while (1);
     }
     Serial.println("MMA8451 found!");
