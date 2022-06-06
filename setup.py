@@ -14,6 +14,10 @@
 from gpiozero import Device, Servo
 from gpiozero.pins.mock import MockFactory, MockPWMPin
 
+from time import sleep
+from sender import Sender
+import json
+
 # This line forces the code to use fake pins for testing. Remove when testing on an actual circuit.
 Device.pin_factory = MockFactory(pin_class=MockPWMPin)
 
@@ -26,9 +30,24 @@ servo2 = Servo(10)
 
 def calibrate():
     """Calibrates the servo and provides voltage values at max and min positions"""
+    port = 'COM8'  # replace this with the correct port
+    s = Sender(port)
     servo1.min()
     servo2.min()
-    pass
+    sleep(2)  # allow time for servos to settle
+    s.send('getPos()')
+    curPos = json.loads(s.receive())
+    minPos = curPos
+    sleep(0.5)
+    servo1.max()
+    servo2.max()
+    sleep(2)  # allow time for servos to settle
+    s.send('getPos()')
+    s.receive()
+    curPos = json.loads(s.receive())
+    maxPos = curPos
+    s.close()
+    return minPos, maxPos
 
 
 def main():
