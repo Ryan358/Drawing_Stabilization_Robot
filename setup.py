@@ -32,21 +32,24 @@ def calibrate():
     """Calibrates the servo and provides voltage values at max and min positions"""
     port = 'COM8'  # replace this with the correct port
     s = Sender(port)
+    curPos = []
     servo1.min()
     servo2.min()
     sleep(2)  # allow time for servos to settle
     s.send('getPos()')
-    curPos = json.loads(s.receive())
-    minPos = curPos
+    curPos.append(json.loads(s.receive()))
+    minPos = curPos[0]
     sleep(0.5)
     servo1.max()
     servo2.max()
     sleep(2)  # allow time for servos to settle
     s.send('getPos()')
     s.receive()
-    curPos = json.loads(s.receive())
-    maxPos = curPos
+    curPos.append(json.loads(s.receive()))
+    maxPos = curPos[1]
     s.close()
+    with open('bounds.json', 'w') as f:
+        json.dump(curPos, f)
     return minPos, maxPos
 
 

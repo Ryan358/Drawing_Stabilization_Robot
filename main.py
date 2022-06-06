@@ -7,7 +7,8 @@ servo2pos = ADC(27)
 
 
 def getPos():
-    pos = [servo1pos.read_u16(), servo2pos.read_u16()]
+    pos = [300, 400]
+    # pos = [servo1pos.read_u16(), servo2pos.read_u16()]
     print(pos)
     return pos
 

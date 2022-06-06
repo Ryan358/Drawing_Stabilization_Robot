@@ -1,16 +1,24 @@
 from sender import Sender
 from time import sleep
 import json
-import board
+#import board
 import adafruit_mma8451
 from setup import calibrate, servo1, servo2
 from numpy import interp
+import os.path
 
 threshold = 2
 
 
 def main():
-    minBounds, maxBounds = calibrate()
+    if os.path.exists('bounds.json'):
+        with open('bounds.json') as f:
+            bounds = json.load(f)
+            minBounds = bounds[0]
+            maxBounds = bounds[1]
+    else:
+        minBounds, maxBounds = calibrate()
+
     servo1.detach()
     servo2.detach()
     port = 'COM8'  # replace this with the correct port
