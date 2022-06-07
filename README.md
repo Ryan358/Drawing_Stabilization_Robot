@@ -22,4 +22,5 @@ json file containing the bounds.
 
 ### **Damping**:
 This code uses the data from setup to check accelerometer data and control the servos accordingly. Using the initializations
-from setup.py and the current positions provided by main.py, this code checks if hand movement exceeds a threshold
+from setup.py and the current positions provided by main.py, this code checks if hand movement exceeds a threshold of acceleration and momentarily stiffens the servos
+if it does. 
