@@ -1,5 +1,5 @@
 # Drawing Stabilization Robot
- This robot is designed to stabilize hand tremors in people with motor function issues. 
+ This robot is designed to stabilize hand tremors in people with motor function issues. For hardware testing: I suggest testing Main first to get the analog inputs settled, then test setup to ensure that you can move and calibrate servos properly. Then you can test damping. 
 
 # Code
 The code is split into three separate modules; main.py, damping.py, and setup.py. Main.py controls the Pico, setup.py
@@ -24,3 +24,5 @@ json file containing the bounds.
 This code uses the data from setup to check accelerometer data and control the servos accordingly. Using the initializations
 from setup.py and the current positions provided by main.py, this code checks if hand movement exceeds a threshold of acceleration and momentarily stiffens the servos
 if it does. 
+
+For hardware testing: I suggest testing Main first to get the analog inputs settled, then test setup to ensure that you can move and calibrate servos properly. Then you can test damping. 
