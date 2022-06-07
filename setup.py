@@ -31,6 +31,7 @@ Device.pin_factory = MockFactory(pin_class=MockPWMPin)
 # check the docs at https://gpiozero.readthedocs.io/en/stable/index.html
 
 # declare servo pins, and initialize the accelerometer. This code always runs when imported.
+# change these servo pins to whatever is going to be used.
 servo1 = Servo(9)
 servo2 = Servo(10)
 i2c = board.I2C()
