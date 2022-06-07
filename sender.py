@@ -1,3 +1,7 @@
+"""This module defines a class that creates the serial connection. The Sender object simplifies
+the process of reading and writing to the command line of the PICO. This module is solely imported so the
+Sender class can be used."""
+
 import serial
 
 
