@@ -1,4 +1,4 @@
-   #include <Wire.h>
+#include <Wire.h>
 #include <Adafruit_MMA8451.h>
 #include <Adafruit_Sensor.h>
 #include <Servo.h>
@@ -60,7 +60,7 @@ void setup()
 
 
   if (! mma.begin()) {
-    Serial.println("Couldnt start");
+    Serial.println("Couldn't' start");
     while (1);
   }
   Serial.println("MMA8451 found!");
